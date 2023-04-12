@@ -1,0 +1,81 @@
+@use "../../mixins/media-queries" as mq;
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 80px;
+}
+
+.premium-promotion {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, auto);
+  width: 80vw;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 5px 5px 30px 0 #888888;
+
+  @include mq.desktop-width {
+    width: 50vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  &__section {
+    padding: 30px;
+    display: block;
+    $parent: &;
+
+    &--offer {
+      @extend #{$parent};
+
+      @include mq.desktop-width {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &--pricing {
+      @extend #{$parent};
+    }
+
+    &--service {
+      @extend #{$parent};
+    }
+
+    &__title {
+      margin-block-end: 10px;
+      font-weight: bold;
+    }
+    
+    &__subtitle {
+      margin-block-end: 10px;
+      font-weight: bold;
+    }
+    
+    &__content {
+      margin-block-end: 10px;
+      line-height: 1.5em;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px 0 #888888;
+      margin-block-start: 30px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

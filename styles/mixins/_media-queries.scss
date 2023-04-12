@@ -1,0 +1,7 @@
+@use "../variables/breakpoints" as bp;
+
+@mixin desktop-width {
+    @media screen and (min-width: #{map-get(bp.$breakpoints, "min-desktop-view-width")}) {
+        @content;
+    }
+}
